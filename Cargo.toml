@@ -8,5 +8,3 @@ edition = "2021"
 [dependencies]
 riscv-rt = "0.8.1"
 panic-halt = "0.2.0"
-#riscv = "0.8.0"
-#r0 = "1.0.0"

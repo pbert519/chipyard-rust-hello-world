@@ -4,6 +4,11 @@
 extern crate panic_halt;
 extern crate riscv_rt;
 
+#[no_mangle]
+static mut tohost: u64 = 0;
+#[no_mangle]
+static mut fromhost: u64 = 0;
+
 mod uart;
 
 use riscv_rt::entry;
@@ -16,8 +21,21 @@ fn main() -> ! {
     uart.init();
     println!("Hello World");
 
-    // we have no support for the debug interface and can not signalize the programm is finished
-    loop {}
+
+    loop {
+        exit(1);
+    }
+}
+
+/// Helper function to signal verilator stopping the simulation
+/// Only usable with chipyard created simulations
+fn exit(exitcode: u64) {
+    unsafe {
+        // signals the simulator to stop the application
+        tohost = (exitcode << 1) | 1;
+        // just a dummy to keep the symbol
+        fromhost = 1;
+     }
 }
 
 

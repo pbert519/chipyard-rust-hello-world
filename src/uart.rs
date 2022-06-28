@@ -5,11 +5,11 @@ pub struct Uart{
 }
 
 const TXDATA: usize = 0;
-const RXDATA: usize = 1;
+const _RXDATA: usize = 1;
 const TXCTRL: usize = 2;
 const RXCTRL: usize = 3;
 const IE: usize = 4;
-const IP: usize = 5;
+const _IP: usize = 5;
 const DIV: usize = 6;
 
 
