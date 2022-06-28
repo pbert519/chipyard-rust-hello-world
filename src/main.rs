@@ -14,7 +14,7 @@ fn main() -> ! {
     // This is a basic SiFive Uart interface
     let mut uart = uart::Uart::new(0x54_000_000);
     uart.init();
-    println!("Hallo Slashwhy");
+    println!("Hello World");
 
     // we have no support for the debug interface and can not signalize the programm is finished
     loop {}
